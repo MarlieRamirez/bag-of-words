@@ -1,4 +1,6 @@
 package url.ia;
+import url.ia.service.FileService;
+
 import java.util.Scanner;
 import java.util.Arrays;
 
@@ -6,9 +8,11 @@ public class Main {
     public static void main(String[] args) {
 
         Scanner myObj = new Scanner(System.in);
-        BagOfWords bow = new BagOfWords();
-        bow.init();
+        BagOfWords bow = BagOfWords.getInstance();
+        FileService fs = new FileService();
+
         String opc = "0";
+        fs.readFile();
 
         while (!opc.equals("3")){
             System.out.println("------- MENU -------");

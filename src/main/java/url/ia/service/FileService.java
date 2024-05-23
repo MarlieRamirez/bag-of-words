@@ -1,5 +1,7 @@
 package url.ia.service;
 
+import url.ia.BagOfWords;
+
 import java.io.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -13,6 +15,8 @@ public class FileService {
         StringBuilder sb = new StringBuilder();
         String sentece = "";
         File file = new File(complete_route);
+        BagOfWords bow = BagOfWords.getInstance();
+
 
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
 
@@ -20,7 +24,10 @@ public class FileService {
 
             while ((row = reader.readLine()) != null) {
                 sentece = row;
+                int i = row.indexOf("|");
+                bow.add(row.substring(0,i).toLowerCase(), row.substring(i+2).toLowerCase());
             }
+
         } catch (IOException e) {
             throw new RuntimeException(e);
 
