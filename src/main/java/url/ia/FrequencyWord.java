@@ -6,6 +6,23 @@ import java.util.Map;
 
 public class FrequencyWord {
 
+    public Map<String,Integer> createFrequencyTableV2(List<String> corpus,  Map<String, List<String>> bagOfWords){
+        Map<String,Integer> frequencies = new HashMap<>();
+        for (String sentence: corpus){
+            String[] tokens = sentence.split(" ");
+            for (String token : tokens) {
+                if (!(frequencies.containsKey(token))) {
+                    frequencies.put(token, 1);
+                } else {
+                    int currentValue = frequencies.getOrDefault(token, 0);
+                    frequencies.put(token, currentValue + 1);
+                }
+            }
+        }
+
+        return frequencies;
+    }
+
     public Map<String,Integer> createFrequencyTable(List<String> corpus){
         Map<String,Integer> frequencies = new HashMap<>();
         for (String sentence: corpus){
@@ -38,6 +55,8 @@ public class FrequencyWord {
         }
         return cpt;
     }
+
+
 
 
 }

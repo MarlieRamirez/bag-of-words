@@ -14,7 +14,7 @@ public class FileService {
 
     private final String ROUTE = "src/main/java/url/ia/files/text_file.txt";
 
-    public  Map<List<String>, String> readFile() {
+    public  void readFile() {
 
         Path path = Paths.get(ROUTE);
         String complete_route = path.toAbsolutePath().toString();
@@ -27,7 +27,7 @@ public class FileService {
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String row;
             while ((row = reader.readLine()) != null) {
-                sentece = row;
+
                 int i = row.indexOf("|");
                 bow.add(row.substring(0,i).toLowerCase(), row.substring(i+2).toLowerCase());
             }
@@ -37,7 +37,5 @@ public class FileService {
 
 
         }
-
-        return dataMap;
     }
 }

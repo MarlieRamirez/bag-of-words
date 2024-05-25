@@ -2,11 +2,169 @@ La vida es hermosa | positivo
 Las nubes cubren el cielo | meh
 No hay salida en este laberinto | negativo
 A veces canto en la ducha | irrelevante
-Todo es posible si lo intentas | positivo
-El café se enfrió muy rápido | meh
-Perdí mi trabajo ayer | negativo
-Los gatos son criaturas interesantes | irrelevante
-Logré terminar mi proyecto a tiempo | positivo
-El semáforo cambió a amarillo | meh
-No puedo encontrar mis llaves | negativo
-Me gusta el helado de vainilla | irrelevante
+El sol brilla con intensidad | positivo
+El tráfico es pesado hoy | meh
+La tristeza me invade | negativo
+Los pájaros cantan al amanecer | positivo
+No puedo encontrar paz | negativo
+La rutina diaria es monótona | meh
+La sonrisa de un niño es pura alegría | positivo
+A veces canto en la ducha | irrelevante
+Las nubes cubren el cielo | meh
+El dolor es insoportable | negativo
+Me encanta el aroma del café por la mañana | positivo
+Las nubes cubren el cielo | meh
+El miedo me paraliza | negativo
+Las flores están floreciendo en el jardín | positivo
+El éxito es fruto del esfuerzo | positivo
+El odio se apodera de mí | negativo
+El ruido de la ciudad es incesante | meh
+La desesperanza me consume | negativo
+El tráfico es pesado hoy | meh
+El cielo está azul | irrelevante
+No hay salida en este laberinto | negativo
+La música me llena de felicidad | positivo
+A veces canto en la ducha | irrelevante
+La ansiedad es constante | negativo
+La brisa del mar es refrescante | positivo
+La amistad verdadera es invaluable | positivo
+La vida es hermosa | positivo
+No hay salida en este laberinto | negativo
+El amor nos da fuerza | positivo
+La luna ilumina la noche | positivo
+Las nubes cubren el cielo | meh
+El arcoíris después de la lluvia es hermoso | positivo
+No hay salida en este laberinto | negativo
+Me siento en paz en la naturaleza | positivo
+El tráfico es pesado hoy | meh
+El dolor es insoportable | negativo
+La familia es un tesoro | positivo
+El fracaso es inevitable | negativo
+La tristeza me invade | negativo
+A veces canto en la ducha | irrelevante
+Las nubes cubren el cielo | meh
+No hay salida en este laberinto | negativo
+A veces canto en la ducha | irrelevante
+La risa es el mejor remedio | positivo
+La lectura me transporta a otros mundos | positivo
+El perro corre en el parque | irrelevante
+Las hojas caen de los árboles | irrelevante
+La bondad es contagiosa | positivo
+Un abrazo sincero es reconfortante | positivo
+Las estrellas brillan en el cielo nocturno | positivo
+El éxito es fruto del esfuerzo | positivo
+No hay salida en este laberinto | negativo
+Los sueños se pueden alcanzar | positivo
+Las nubes cubren el cielo | meh
+El sol sale por el este | irrelevante
+El libro es denso | meh
+El dolor es insoportable | negativo
+La salud es una bendición | positivo
+A veces canto en la ducha | irrelevante
+El perro corre en el parque | irrelevante
+El trabajo se acumula | meh
+No hay salida en este laberinto | negativo
+La conexión a internet es inestable | meh
+El ruido de la ciudad es incesante | meh
+El odio se apodera de mí | negativo
+La enfermedad me agota | negativo
+La calle está en obras | meh
+El correo no llega | meh
+La generosidad enriquece el alma | positivo
+El éxito es fruto del esfuerzo | positivo
+La desesperanza me consume | negativo
+La esperanza nunca se pierde | positivo
+El autobús se retrasa siempre | meh
+Las nubes cubren el cielo | meh
+El gato está enojado | meh
+El coche está estacionado | irrelevante
+La soledad es abrumadora | negativo
+El supermercado está lleno | meh
+El teléfono suena | irrelevante
+El odio se apodera de mí | negativo
+No hay salida en este laberinto | negativo
+Los momentos simples son los más especiales | positivo
+La silla está incómoda | meh
+El perro corre en el parque | irrelevante
+El semáforo cambia a verde | irrelevante
+La creatividad nos hace únicos | positivo
+El éxito es fruto del esfuerzo | positivo
+Las nubes cubren el cielo | meh
+El ventilador gira | irrelevante
+No hay salida en este laberinto | negativo
+La lavadora se averió | meh
+La tristeza me invade | negativo
+A veces canto en la ducha | irrelevante
+El libro es denso | meh
+La confianza es la base de toda relación | positivo
+El perro corre en el parque | irrelevante
+La felicidad se encuentra en las pequeñas cosas | positivo
+Las hojas caen de los árboles | irrelevante
+La armonía es esencial | positivo
+El ruido de la ciudad es incesante | meh
+El cansancio es extremo | negativo
+La paz interior es invaluable | positivo
+El perro corre en el parque | irrelevante
+La inspiración está en todas partes | positivo
+Las nubes cubren el cielo | meh
+El sol sale por el este | irrelevante
+El coche está estacionado | irrelevante
+No hay salida en este laberinto | negativo
+El supermercado está lleno | meh
+La tristeza me invade | negativo
+El libro está en la estantería | irrelevante
+Las estrellas brillan en el cielo nocturno | positivo
+La sonrisa de un desconocido puede alegrar el día | positivo
+La ventana está abierta | irrelevante
+El dolor es insoportable | negativo
+El reloj marca las tres | irrelevante
+Las nubes cubren el cielo | meh
+La vida es un regalo | positivo
+El libro es denso | meh
+La oscuridad es aterradora | negativo
+La vida es hermosa | positivo
+El tráfico es pesado hoy | meh
+El rechazo duele | negativo
+A veces canto en la ducha | irrelevante
+Las nubes cubren el cielo | meh
+El abandono es doloroso | negativo
+El ruido de la ciudad es incesante | meh
+La soledad me asfixia | negativo
+Las nubes cubren el cielo | meh
+El tráfico es pesado hoy | meh
+La mentira es destructiva | negativo
+El éxito es fruto del esfuerzo | positivo
+La humildad engrandece | positivo
+El cielo está azul | irrelevante
+El sol sale por el este | irrelevante
+Las nubes cubren el cielo | meh
+La vida es hermosa | positivo
+El odio se apodera de mí | negativo
+Las nubes cubren el cielo | meh
+La depresión es un pozo sin fondo | negativo
+La compasión es necesaria | positivo
+A veces canto en la ducha | irrelevante
+La creatividad nos hace únicos | positivo
+El tráfico es pesado hoy | meh
+La soledad me asfixia | negativo
+El coche está estacionado | irrelevante
+Las nubes cubren el cielo | meh
+El éxito es fruto del esfuerzo | positivo
+El tráfico es pesado hoy | meh
+La tristeza me invade | negativo
+El perro corre en el parque | irrelevante
+El supermercado está lleno | meh
+No hay salida en este laberinto | negativo
+Las nubes cubren el cielo | meh
+El tráfico es pesado hoy | meh
+El odio se apodera de mí | negativo
+El sol brilla con intensidad | positivo
+A veces canto en la ducha | irrelevante
+El perro corre en el parque | irrelevante
+El tráfico es pesado hoy | meh
+La tristeza me invade | negativo
+El éxito es fruto del esfuerzo | positivo
+El abandono es doloroso | negativo
+Las nubes cubren el cielo | meh
+El perro corre en el parque | irrelevante
+La vida es hermosa | positivo
