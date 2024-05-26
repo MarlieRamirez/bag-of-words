@@ -61,8 +61,6 @@ public class FrequencyWord {
     public Map<String, Map<String, Integer>> getFrequencies(String phrase){
         // frecuencia general
         Map<String, Map<String, Integer>> frequencies = new  HashMap<>();
-        // frecuencia específica
-        Map<String, Map<String, Integer>> frequenciesPhrase = new  HashMap<>();
 
         //Crea tabla general
         for (Map.Entry<String,List<String>> words: bow.map.entrySet()){
@@ -70,24 +68,13 @@ public class FrequencyWord {
         }
 
         //Crea tabla tomando en cuenta frase
-        for (Map.Entry<String,Map<String, Integer>> item : frequencies.entrySet()){
-            Map<String,Integer> frequencyForPhrase = new HashMap<>();
-            String[] tokens = phrase.split(" ");
-            for (String token : tokens) {
-                if (item.getValue().containsKey(token)) {
-                    frequencyForPhrase.put(token, item.getValue().values().stream().findFirst().get() + 1);
-                    frequenciesPhrase.put(item.getKey(),frequencyForPhrase);
-                } else {
-                    frequencyForPhrase.put(token, 1);
-                    frequenciesPhrase.put(item.getKey(),frequencyForPhrase);
-                }
-            }
-        }
+        Map<String, Map<String, Integer>> frequenciesPhrase = new HashMap<>(createFrequencyTable(phrase, frequencies));
+
         return  frequenciesPhrase;
     }
 
     public void getSequence(String phrase){
-        Map<String,Integer> frequenciesPhraseMap = new HashMap<>();
+        Map<String,Integer> frequenciesPhraseValues = new HashMap<>();
         Map<String, Integer> countWords = new HashMap<>();
 
         for (Map.Entry<String,List<String>> words: bow.map.entrySet()){
@@ -95,15 +82,14 @@ public class FrequencyWord {
         }
 
         // Manipular tipos de datos
-        var tempMap = getFrequencies(phrase.toLowerCase()).values();
-        for (var frequency: tempMap) {
-            frequenciesPhraseMap.putAll(frequency);
+        for (var frequency: getFrequencies(phrase.toLowerCase()).values()) {
+            frequenciesPhraseValues.putAll(frequency);
         }
-        System.out.println(tempMap);
+        System.out.println(frequenciesPhraseValues);
         // Crear secuencia de probabilidades
         Map<String, Map<String, Float>> sequenceProbabilityPhrase = new HashMap<>();
         for (Map.Entry<String, Integer> map : countWords.entrySet()){
-            sequenceProbabilityPhrase.put(map.getKey(), transformSequenceProbability(frequenciesPhraseMap, map.getValue()));
+            sequenceProbabilityPhrase.put(map.getKey(), transformSequenceProbability(frequenciesPhraseValues, map.getValue()));
         }
 
         //Imprimir secuencia
