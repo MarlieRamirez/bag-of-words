@@ -76,7 +76,7 @@ public class FrequencyWord {
                     frequencyForPhrase.put(token, item.getValue().values().stream().findFirst().get() + 1);
                     frequenciesPhrase.put(item.getKey(),frequencyForPhrase);
                 } else {
-                    frequencyForPhrase.put(token, 0);
+                    frequencyForPhrase.put(token, 1);
                     frequenciesPhrase.put(item.getKey(),frequencyForPhrase);
                 }
             }
