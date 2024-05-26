@@ -1,10 +1,10 @@
 package url.ia;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class FrequencyWord {
+    BagOfWords bow = BagOfWords.getInstance();
+    Probability probability = new Probability();
 
     public Map<String,Integer> createFrequencyTableV2(List<String> corpus,  Map<String, List<String>> bagOfWords){
         Map<String,Integer> frequencies = new HashMap<>();
@@ -56,7 +56,81 @@ public class FrequencyWord {
         return cpt;
     }
 
+    public Map<String, Map<String, Integer>> getFrequencies(String phrase){
+        // frecuencia general
+        Map<String, Map<String, Integer>> frequencies = new  HashMap<>();
+        // frecuencia específica
+        Map<String, Map<String, Integer>> frequenciesPhrase = new  HashMap<>();
+
+        //Crea tabla general
+        for (Map.Entry<String,List<String>> words: bow.map.entrySet()){
+            frequencies.put(words.getKey(), createFrequencyTable(words.getValue()));
+        }
+
+        //Crea tabla tomando en cuenta frase
+        for (Map.Entry<String,Map<String, Integer>> item : frequencies.entrySet()){
+            Map<String,Integer> frequencyForPhrase = new HashMap<>();
+            String[] tokens = phrase.split(" ");
+            for (String token : tokens) {
+                if (item.getValue().containsKey(token)) {
+                    frequencyForPhrase.put(token, item.getValue().values().stream().findFirst().get() + 1);
+                    frequenciesPhrase.put(item.getKey(),frequencyForPhrase);
+                } else {
+                    frequencyForPhrase.put(token, 0);
+                    frequenciesPhrase.put(item.getKey(),frequencyForPhrase);
+                }
+            }
+        }
+        return  frequenciesPhrase;
+    }
+
+    public void getSequence(String phrase){
+        Map<String,Integer> frequenciesPhraseMap = new HashMap<>();
+        Map<String, Integer> countWords = new HashMap<>();
+
+        for (Map.Entry<String,List<String>> words: bow.map.entrySet()){
+            countWords.put(words.getKey(), countWord(words.getValue()));
+        }
+
+        // Manipular tipos de datos
+        var tempMap = getFrequencies(phrase.toLowerCase()).values();
+        for (var frequency: tempMap) {
+            frequenciesPhraseMap.putAll(frequency);
+        }
+        System.out.println(tempMap);
+        // Crear secuencia de probabilidades
+        Map<String, Map<String, Float>> sequenceProbabilityPhrase = new HashMap<>();
+        for (Map.Entry<String, Integer> map : countWords.entrySet()){
+            sequenceProbabilityPhrase.put(map.getKey(), transformSequenceProbability(frequenciesPhraseMap, map.getValue()));
+        }
+
+        //Imprimir secuencia
+        System.out.println("Secuencia de probabilidad:");
+        for (Map.Entry<String, Map<String, Float>> value: sequenceProbabilityPhrase.entrySet()){
+            System.out.println(value);
+        }
+
+        makeInference(sequenceProbabilityPhrase);
+    }
+
+    private void makeInference(Map<String, Map<String, Float>> sequenceProbabilityPhrase) {
+        Map<String, Float> totalInference = new HashMap<>();
+        for (var sequence : sequenceProbabilityPhrase.entrySet()) {
+            int sizes = bow.map.get(sequence.getKey()).size();
+            float probabilities = probability.probabilityOf(sizes,bow.map);
+            Float totalProbabilityPhrase = sequenceProbabilityPhrase.get(sequence.getKey()).values().stream()
+                    .reduce(1.0f, (num1, num2) -> num1 * num2);
+
+            Float inference = totalProbabilityPhrase * probabilities;
 
 
+            totalInference.put(sequence.getKey(),inference) ;
+        }
+
+        System.out.println("\n");
+        for (var inference: totalInference.entrySet()) {
+            System.out.println(inference);
+        }
+    }
 
 }
