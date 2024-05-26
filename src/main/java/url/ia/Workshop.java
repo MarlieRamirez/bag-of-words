@@ -24,56 +24,31 @@ public class Workshop {
          *  categoria, la creación de la tabla de frecuencia y la secuencia de probabilidad */
         FrequencyWord frequencyWord = new FrequencyWord();
 
-
         Probability probability = new Probability();
 
         // La frase a analizar
         String phrase = "A veces las nubes son de color azul";
-
-        // transforma la frase a una lista
-        List<String> tempList =  Arrays.asList(phrase);
 
         Map<String, Map<String, Integer>> frequencies = new  HashMap<>();
         for (Map.Entry<String,List<String>> words: bagOfWords.entrySet()){
             frequencies.put(words.getKey(), frequencyWord.createFrequencyTable(words.getValue()));
         }
 
-        Map<String, Map<String, Integer>> frequenciesPhrase = new  HashMap<>();
-        for (Map.Entry<String,Map<String, Integer>> item : frequencies.entrySet()){
-            Map<String,Integer> frequencyForPhrase = new HashMap<>();
-            String[] tokens = phrase.split(" ");
-            for (String token : tokens) {
-                if (item.getValue().containsKey(token)) {
-                    frequencyForPhrase.put(token, item.getValue().values().stream().findFirst().get() + 1);
-                    frequenciesPhrase.put(item.getKey(),frequencyForPhrase);
-                } else {
-                    frequencyForPhrase.put(token, 1);
-                    frequenciesPhrase.put(item.getKey(),frequencyForPhrase);
-                }
-            }
-        }
-        System.out.println(frequenciesPhrase);
+        Map<String, Map<String, Integer>> frequenciesPhrase = new HashMap<>(frequencyWord.createFrequencyTable(phrase, frequencies));
 
         Map<String, Integer> countWords = new HashMap<>();
         for (Map.Entry<String,List<String>> words: bagOfWords.entrySet()){
             countWords.put(words.getKey(), frequencyWord.countWord(words.getValue()));
         }
 
-        var tempMap = frequenciesPhrase.values();
-
-        Map<String,Integer> frequenciesPhraseMap = new HashMap<>();
-        for (var frequency: tempMap) {
-            frequenciesPhraseMap.putAll(frequency);
+        Map<String,Integer> frequenciesPhraseValues = new HashMap<>();
+        for (var frequency: frequenciesPhrase.values()) {
+            frequenciesPhraseValues.putAll(frequency);
         }
 
         Map<String, Map<String, Float>> sequenceProbabilityPhrase = new HashMap<>();
         for (Map.Entry<String, Integer> map : countWords.entrySet()){
-            sequenceProbabilityPhrase.put(map.getKey(), frequencyWord.transformSequenceProbability(frequenciesPhraseMap, map.getValue()));
-        }
-
-        System.out.println("Secuencia de probabilidad:");
-        for (Map.Entry<String, Map<String, Float>> value: sequenceProbabilityPhrase.entrySet()){
-            System.out.println(value);
+            sequenceProbabilityPhrase.put(map.getKey(), frequencyWord.transformSequenceProbability(frequenciesPhraseValues, map.getValue()));
         }
 
         Map<String, Float> totalInference = new HashMap<>();
@@ -85,8 +60,7 @@ public class Workshop {
 
             Float inference = totalProbabilityPhrase * probabilities;
 
-
-           totalInference.put(sequence.getKey(),inference) ;
+           totalInference.put(sequence.getKey(), inference) ;
         }
 
         System.out.println("\n");
