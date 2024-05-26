@@ -6,21 +6,23 @@ public class FrequencyWord {
     BagOfWords bow = BagOfWords.getInstance();
     Probability probability = new Probability();
 
-    public Map<String,Integer> createFrequencyTableV2(List<String> corpus,  Map<String, List<String>> bagOfWords){
-        Map<String,Integer> frequencies = new HashMap<>();
-        for (String sentence: corpus){
-            String[] tokens = sentence.split(" ");
+    public Map<String, Map<String, Integer>> createFrequencyTable(String corpus,  Map<String, Map<String, Integer>> frequencies){
+        Map<String, Map<String, Integer>> corpusFrequencies = new  HashMap<>();
+        for (Map.Entry<String,Map<String, Integer>> item : frequencies.entrySet()){
+            Map<String,Integer> frequencyPerCorpus = new HashMap<>();
+            String[] tokens = corpus.split(" ");
             for (String token : tokens) {
-                if (!(frequencies.containsKey(token))) {
-                    frequencies.put(token, 1);
+                if (item.getValue().containsKey(token)) {
+                    frequencyPerCorpus.put(token, item.getValue().values().stream().findFirst().get() + 1);
+                    corpusFrequencies.put(item.getKey(),frequencyPerCorpus);
                 } else {
-                    int currentValue = frequencies.getOrDefault(token, 0);
-                    frequencies.put(token, currentValue + 1);
+                    frequencyPerCorpus.put(token, 1);
+                    corpusFrequencies.put(item.getKey(),frequencyPerCorpus);
                 }
             }
         }
 
-        return frequencies;
+        return  corpusFrequencies;
     }
 
     public Map<String,Integer> createFrequencyTable(List<String> corpus){
