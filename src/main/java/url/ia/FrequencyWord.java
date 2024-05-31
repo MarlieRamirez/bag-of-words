@@ -18,7 +18,7 @@ public class FrequencyWord {
             }
 
         }
-        System.out.println(corpusFrequencies);
+        //System.out.println(corpusFrequencies);
         return  corpusFrequencies;
     }
 
@@ -51,6 +51,7 @@ public class FrequencyWord {
     public Map<String,Float> transformSequenceProbability(Map<String,Integer> frequency ,int totalWords){
         Map<String,Float> cpt = new HashMap<>();
         for (Map.Entry<String,Integer> item :frequency.entrySet()){
+            //System.out.println(item.getKey());
             float probability = (float) item.getValue() / totalWords;
             cpt.put(item.getKey(), probability);
         }
@@ -65,35 +66,31 @@ public class FrequencyWord {
         for (Map.Entry<String,List<String>> words: bow.map.entrySet()){
             frequencies.put(words.getKey(), createFrequencyTable(words.getValue()));
         }
-
-        //Crea tabla tomando en cuenta frase
         Map<String, Map<String, Integer>> frequenciesPhrase = new HashMap<>(createFrequencyTable(phrase, frequencies));
-
+        //Crea tabla tomando en cuenta frase
+        frequenciesPhrase.putAll(createFrequencyTable(phrase, frequencies));
         return  frequenciesPhrase;
     }
 
     public void getSequence(String phrase){
-        Map<String,Integer> frequenciesPhraseValues = new HashMap<>();
         Map<String, Integer> countWords = new HashMap<>();
+        Map<String, Map<String, Integer>> frequenciesTemp = getFrequencies(phrase.toLowerCase());
+        //var frequency = getFrequencies(phrase.toLowerCase());
 
         for (Map.Entry<String,List<String>> words: bow.map.entrySet()){
             countWords.put(words.getKey(), countWord(words.getValue()));
         }
 
-        // Manipular tipos de datos
-        for (var frequency: getFrequencies(phrase.toLowerCase()).values()) {
-            frequenciesPhraseValues.putAll(frequency);
-            //System.out.println(frequency);
-        }
-
         // Crear secuencia de probabilidades
         Map<String, Map<String, Float>> sequenceProbabilityPhrase = new HashMap<>();
+        // Manipular tipos de datos
         for (Map.Entry<String, Integer> map : countWords.entrySet()){
-            sequenceProbabilityPhrase.put(map.getKey(), transformSequenceProbability(frequenciesPhraseValues, map.getValue()));
+            sequenceProbabilityPhrase.put(map.getKey(), transformSequenceProbability(frequenciesTemp.get(map.getKey()), map.getValue()));
+
         }
 
         //Imprimir secuencia
-        System.out.println("Secuencia de probabilidad:");
+        System.out.println("\nSecuencia de probabilidad:");
         for (Map.Entry<String, Map<String, Float>> value: sequenceProbabilityPhrase.entrySet()){
             System.out.println(value);
         }
