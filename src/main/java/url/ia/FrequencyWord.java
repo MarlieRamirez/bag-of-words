@@ -8,20 +8,17 @@ public class FrequencyWord {
 
     public Map<String, Map<String, Integer>> createFrequencyTable(String corpus,  Map<String, Map<String, Integer>> frequencies){
         Map<String, Map<String, Integer>> corpusFrequencies = new  HashMap<>();
+
         for (Map.Entry<String,Map<String, Integer>> item : frequencies.entrySet()){
             Map<String,Integer> frequencyPerCorpus = new HashMap<>();
             String[] tokens = corpus.split(" ");
             for (String token : tokens) {
-                if (item.getValue().containsKey(token)) {
-                    frequencyPerCorpus.put(token, item.getValue().values().stream().findFirst().get() + 1);
-                    corpusFrequencies.put(item.getKey(),frequencyPerCorpus);
-                } else {
-                    frequencyPerCorpus.put(token, 1);
-                    corpusFrequencies.put(item.getKey(),frequencyPerCorpus);
-                }
+                frequencyPerCorpus.put(token, frequencies.get(item.getKey()).getOrDefault(token,1));
+                corpusFrequencies.put(item.getKey(),frequencyPerCorpus);
             }
-        }
 
+        }
+        System.out.println(corpusFrequencies);
         return  corpusFrequencies;
     }
 
@@ -29,7 +26,9 @@ public class FrequencyWord {
         Map<String,Integer> frequencies = new HashMap<>();
         for (String sentence: corpus){
             String[] tokens = sentence.split(" ");
+
             for (String token : tokens) {
+
                 if (!(frequencies.containsKey(token))) {
                     frequencies.put(token, 1);
                 } else {
@@ -84,8 +83,9 @@ public class FrequencyWord {
         // Manipular tipos de datos
         for (var frequency: getFrequencies(phrase.toLowerCase()).values()) {
             frequenciesPhraseValues.putAll(frequency);
+            //System.out.println(frequency);
         }
-        System.out.println(frequenciesPhraseValues);
+
         // Crear secuencia de probabilidades
         Map<String, Map<String, Float>> sequenceProbabilityPhrase = new HashMap<>();
         for (Map.Entry<String, Integer> map : countWords.entrySet()){
